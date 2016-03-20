@@ -15,7 +15,7 @@ help me
 
 
 ## What is ed?
-*ed* is the [original line editor for UNIX][0], written by Ken Thompson circa
+**ed** is the [original line editor for UNIX][0], written by Ken Thompson circa
 1971. Itself influenced by qed, ed is the precursor to modern modal editors:
 among it's descendants are ex, sed, vi, and vim. ed was one of the core
 components of the UNIX system, and as such is a historically important piece
