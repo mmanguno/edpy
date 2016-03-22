@@ -1,8 +1,3 @@
-import sys
-
-"""modes.py: the modes of edpy"""
-
-
 # Define an error message to use on all Mode superclass methods
 abstract_implemented_error = "Mode is abstract; function not implemented."
 
@@ -47,31 +42,3 @@ class Mode(object):
         Returns the identifier of the mode.
         """
         raise NotImplementedError(abstract_implemented_error)
-
-
-class QuitMode(Mode):
-    """The 'mode' for quitting. Exits the program when called."""
-
-    def __init__(self, pre_args, post_args):
-        """Initializes a QuitMode.
-
-        Keyword arguments:
-        pre_args -- the arguments appearing before the mode identifier
-        post_args -- the arguments appearing after the mode identifier
-
-        Returns a QuitMode object.
-        """
-        self.pre_args = pre_args
-        self.post_args = post_args
-
-    def run(self):
-        """Exit the program by returning a non-truthy value."""
-        return False
-
-    @staticmethod
-    def getIdentifier():
-        """Return 'q', the identifier of QuitMode.
-
-        Returns 'q'.
-        """
-        return 'q'
