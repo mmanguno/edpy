@@ -21,3 +21,5 @@ class EditBuffer(object):
         """Writes the text in the buffer to file."""
         with open(self.file_handle, 'w') as f:
             f.write(self.text)
+
+        self.is_changed = False
