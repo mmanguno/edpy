@@ -12,7 +12,7 @@ class EditMode(Mode):
         Returns a EditMode object.
         """
         if not post_args:
-            raise ArgumentError("Edit needs an a file name argument")
+            raise Exception("Edit needs an a file name argument")
 
         self.pre_args = None
         self.post_args = post_args
