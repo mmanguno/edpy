@@ -28,7 +28,7 @@ Although it's a pain, ed is just _cool_; masochistic programming is in vogue.
 
 It's also a neat little project to do: probably the easiest editor out there
 to write up, and it'll be fun. Besides, it's always a good idea to brush up on
-Python.
+Python. For reference, I'm using the [GNU 'ed' manual][1].
 
 ## Anything else?
 I'll be adding more to the README as the project becomes more fleshed out.
@@ -38,3 +38,4 @@ Please, feel free to fork and make PRs if you want in on this.
 _Also let me know if you've got a better name._
 
 [0]: https://en.wikipedia.org/wiki/Ed_(text_editor)
+[1]: http://www.gnu.org/software/ed/manual/ed_manual.html
