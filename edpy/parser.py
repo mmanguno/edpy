@@ -29,22 +29,20 @@ def _init_modes(mode_module, ignored):
     all_members = inspect.getmembers(mode_module)
     all_mode_classes = []
     for member in all_members:
-        if member not in ignored and inspect.isclass(member):
-            all_mode_classes.append(member)
+        # Each 'member' is a tuple of (class_name, class_object), if a class
+        class_object = member[1]
+        if (class_object not in ignored) and (inspect.isclass(class_object)):
+            all_mode_classes.append(class_object)
 
     return _dict_modes(all_mode_classes)
 
-
-ignored_classes = [edpy.modes.Mode] # ignore Mode in dict initialization
-
-# Declare the major modes
-modes = _init_modes(edpy.modes, ignored_classes)
-
-def parse(args):
+def parse(args, modes):
     """Parse the input string, and send it to the correct mode handler.
 
     Keyword arguments:
     args -- a valid ed input string
+    modes -- a dictionary of {mode_identifier: mode}
+
     Returns the mode to run, loaded with its arguments
     """
     # Manipulate the string to get the mode and associated arguments
@@ -61,8 +59,11 @@ def parse(args):
 
 def loop():
     """Run the loop: get args, run args, get args, run args, etc."""
+    ignored_classes = [edpy.modes.Mode] # ignore Mode in dict initialization
+    # Declare the major modes
+    modes = _init_modes(edpy.modes, ignored_classes)
     # Run forever. A call to QuitMode will be the only way to exit.
     while(True):
         args = input("")
-        mode = parse(args)
+        mode = parse(args, modes)
         mode.run()

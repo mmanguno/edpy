@@ -1,6 +1,16 @@
-from edpy.modes import Mode
+class TestMode(object):
 
-class TestModeOne(Mode):
+    def __init__(self, pre_args, post_args):
+        raise NotImplementedError()
+
+    def run():
+        raise NotImplementedError()
+
+    def getIdentifier():
+        raise NotImplementedError()
+
+
+class TestModeOne(TestMode):
 
     def __init__(self, pre_args, post_args):
         self.pre_args = pre_args
@@ -10,9 +20,9 @@ class TestModeOne(Mode):
         return "Run testmode1"
 
     def getIdentifier():
-        return 'test1'
+        return '1'
 
-class TestModeTwo(Mode):
+class TestModeTwo(TestMode):
 
     def __init__(self, pre_args, post_args):
         self.pre_args = pre_args
@@ -22,4 +32,4 @@ class TestModeTwo(Mode):
         return "Run testmode2"
 
     def getIdentifier():
-        return 'test2'
+        return '2'
