@@ -63,11 +63,11 @@ class QuitMode(Mode):
         self.pre_args = pre_args
         self.post_args = post_args
 
-    def run(self):
+    def run():
         """Exit the program."""
         sys.exit()
 
-    def getIdentifer(self):
+    def getIdentifier():
         """Return 'q', the identifier of QuitMode.
 
         Returns 'q'.

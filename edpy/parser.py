@@ -1,24 +1,44 @@
-from inspect import getmembers, isclass
-import modes
+import edpy.modes
+import inspect
 
-# Declare the major modes
-modes = _dict_modes()
 
-def _dict_modes():
+def _dict_modes(all_mode_classes):
     """Put modes in a dict of {identifier: mode_class}.
+
+    Keyword arguments:
+    all_mode_classes -- a list of all the mode classes
 
     Returns the mode dictionary.
     """
-    superclass = modes.Mode  # Don't want to include the superclass in dict
-    all_members = getmembers(modes)  # Get all top-level members
-
     mode_dict = {}
-    for member in all_members: # For all members in the module...
-        if isclass(member):  # If member is a class (not variable)
-            if member is not superclass: # Don't include superclass
-                mode_dict[member.getIdentifier(): member]  # Add to dict
+    for mode in all_mode_classes: # For all members in the module...
+        mode_dict[mode.getIdentifier()] = mode  # Add to dict
 
     return mode_dict
+
+
+def _init_modes(mode_module, ignored):
+    """Call _dict_modes with a mode module, and with some modes to ignore.
+
+    Keyword arguments:
+    mode_module -- the module to pull classes from
+    ignored -- the classes to ignore
+
+    Returns the mode dictionary
+    """
+    all_members = inspect.getmembers(mode_module)
+    all_mode_classes = []
+    for member in all_members:
+        if member not in ignored and inspect.isclass(member):
+            all_mode_classes.append(member)
+
+    return _dict_modes(all_mode_classes)
+
+
+ignored_classes = [edpy.modes.Mode] # ignore Mode in dict initialization
+
+# Declare the major modes
+modes = _init_modes(edpy.modes, ignored_classes)
 
 def parse(args):
     """Parse the input string, and send it to the correct mode handler.
