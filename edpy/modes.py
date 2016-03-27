@@ -63,9 +63,9 @@ class QuitMode(Mode):
         self.pre_args = pre_args
         self.post_args = post_args
 
-    def run():
-        """Exit the program."""
-        sys.exit()
+    def run(self):
+        """Exit the program by returning a non-truthy value."""
+        return False
 
     def getIdentifier():
         """Return 'q', the identifier of QuitMode.

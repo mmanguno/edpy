@@ -57,13 +57,17 @@ def parse(args, modes):
     return mode
 
 
-def loop():
-    """Run the loop: get args, run args, get args, run args, etc."""
-    ignored_classes = [edpy.modes.Mode] # ignore Mode in dict initialization
-    # Declare the major modes
-    modes = _init_modes(edpy.modes, ignored_classes)
-    # Run forever. A call to QuitMode will be the only way to exit.
-    while(True):
-        args = input("")
+def loop(modes, input_func):
+    """Run the loop: get args, run args, get args, run args, etc.
+
+    Keyword arguments:
+    modes -- a dictionary of {mode_identifer: mode} of modes available to parse
+    input_func -- the function to get input from
+    """
+    keep_running = True
+    while(keep_running):
+        args = input_func()
         mode = parse(args, modes)
-        mode.run()
+
+        # All modes (except quit) should return something 'truthy'
+        keep_running = mode.run()
