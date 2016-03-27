@@ -1,3 +1,5 @@
+import sys  # For quitting
+
 class TestMode(object):
 
     def __init__(self, pre_args, post_args):
@@ -16,7 +18,7 @@ class TestModeOne(TestMode):
         self.pre_args = pre_args
         self.post_args = post_args
 
-    def run():
+    def run(self):
         return "Run testmode1"
 
     def getIdentifier():
@@ -28,8 +30,19 @@ class TestModeTwo(TestMode):
         self.pre_args = pre_args
         self.post_args = post_args
 
-    def run():
+    def run(self):
         return "Run testmode2"
 
     def getIdentifier():
         return '2'
+
+class TestModeQuit(TestMode):
+    def __init__(self, pre_args, post_args):
+        self.pre_args = pre_args
+        self.post_args = post_args
+
+    def run(self):
+        return False
+
+    def getIdentifier():
+        return 'q'
