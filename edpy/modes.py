@@ -26,7 +26,7 @@ class Mode(object):
         """
         raise NotImplementedError(abstract_implemented_error)
 
-    def run(self):
+    def run():
         """'Run' the mode. This it the main run-loop for the mode to enter.
 
         When run is called, the mode should begin its function. For example,
@@ -35,7 +35,8 @@ class Mode(object):
         """
         raise NotImplementedError(abstract_implemented_error)
 
-    def getIdentifier(self):
+    @staticmethod
+    def getIdentifier():
         """Return the single letter identifier of the mode.
 
         This is useful to enforce each mode having an identifier. It could
@@ -64,10 +65,11 @@ class QuitMode(Mode):
         self.post_args = post_args
 
     def run(self):
-        """Exit the program."""
-        sys.exit()
+        """Exit the program by returning a non-truthy value."""
+        return False
 
-    def getIdentifer(self):
+    @staticmethod
+    def getIdentifier():
         """Return 'q', the identifier of QuitMode.
 
         Returns 'q'.

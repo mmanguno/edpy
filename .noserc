@@ -1,0 +1,7 @@
+[nosetests]
+cover-branches  = 1
+cover-erase     = 1
+cover-package   = edpy
+nocapture       = 1
+verbosity       = 2
+with-coverage   = 1
