@@ -35,6 +35,7 @@ class Mode(object):
         """
         raise NotImplementedError(abstract_implemented_error)
 
+    @staticmethod
     def getIdentifier():
         """Return the single letter identifier of the mode.
 
@@ -67,6 +68,7 @@ class QuitMode(Mode):
         """Exit the program by returning a non-truthy value."""
         return False
 
+    @staticmethod
     def getIdentifier():
         """Return 'q', the identifier of QuitMode.
 
