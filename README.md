@@ -1,3 +1,5 @@
+[![Coverage Status](https://coveralls.io/repos/github/mmanguno/edpy/badge.svg?branch=master)](https://coveralls.io/github/mmanguno/edpy?branch=master)
+
 # edpy
 An implementation of the **ed** line editor in Python.
 
