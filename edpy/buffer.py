@@ -17,9 +17,12 @@ class EditBuffer(object):
         self.is_changed = False
         self.text = ""
 
-    def write():
+    def write(self):
         """Writes the text in the buffer to file."""
         with open(self.file_handle, 'w') as f:
             f.write(self.text)
 
         self.is_changed = False
+
+    def __str__(self):
+        return self.file_handle
