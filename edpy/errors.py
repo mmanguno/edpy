@@ -1,3 +1,4 @@
+import edpy.buffer
 """errors.py: holds the classes of ed errors."""
 
 
