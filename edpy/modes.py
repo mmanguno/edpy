@@ -26,7 +26,7 @@ class Mode(object):
         """
         raise NotImplementedError(abstract_implemented_error)
 
-    def run():
+    def run(self):
         """'Run' the mode. This it the main run-loop for the mode to enter.
 
         When run is called, the mode should begin its function. For example,
